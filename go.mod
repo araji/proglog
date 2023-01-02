@@ -7,6 +7,7 @@ require (
 	github.com/onsi/ginkgo/v2 v2.6.1
 	github.com/onsi/gomega v1.24.2
 	github.com/stretchr/testify v1.8.1
+	github.com/tysonmote/gommap v0.0.2
 )
 
 require (
