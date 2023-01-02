@@ -5,7 +5,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/araji/api/v1"
+	"github.com/araji/proglog/api/v1"
 
 	"google.golang.org/protobuf/proto"
 )
