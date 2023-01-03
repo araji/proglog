@@ -5,8 +5,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/araji/proglog/api/v1"
-
+	apiv1 "github.com/araji/proglog/api/v1"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -53,7 +52,7 @@ func NewSegment(dir string, baseOffset uint64, c Config) (*segment, error) {
 }
 
 // Appends new record to the segment and returns its offset
-func (s *segment) Append(record *api.Record) (offset uint64, err error) {
+func (s *segment) Append(record *apiv1.Record) (offset uint64, err error) {
 	cur := s.nextOffset
 	record.Offset = cur
 	p, err := proto.Marshal(record)
@@ -76,7 +75,7 @@ func (s *segment) Append(record *api.Record) (offset uint64, err error) {
 }
 
 // Returns the record at the given offset
-func (s *segment) Read(off uint64) (*api.Record, error) {
+func (s *segment) Read(off uint64) (*apiv1.Record, error) {
 	_, pos, err := s.index.Read(int64(off - s.baseOffset))
 	if err != nil {
 		return nil, err
@@ -85,7 +84,7 @@ func (s *segment) Read(off uint64) (*api.Record, error) {
 	if err != nil {
 		return nil, err
 	}
-	record := &api.Record{}
+	record := &apiv1.Record{}
 	err = proto.Unmarshal(p, record)
 	return record, err
 
@@ -123,9 +122,11 @@ func (s *segment) Close() error {
 
 // returns the nearest and lesser multiple of k in j
 // used for staying under the user disk capacity
+/**
 func nearestMultiple(j, k uint64) uint64 {
 	if j >= 0 {
 		return (j / k) * k
 	}
 	return ((j - k + 1) / k) * k
 }
+*/
