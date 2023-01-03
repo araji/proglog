@@ -8,10 +8,7 @@ require (
 	github.com/onsi/gomega v1.24.2
 	github.com/stretchr/testify v1.8.1
 	github.com/tysonmote/gommap v0.0.2
-<<<<<<< HEAD
 	google.golang.org/protobuf v1.28.0
-=======
->>>>>>> c99a26d (update modules)
 )
 
 require (
