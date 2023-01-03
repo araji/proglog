@@ -1,0 +1,5 @@
+version: v1
+plugins:
+  - plugin: go
+    out: api/v1
+    opt: paths=source_relative
