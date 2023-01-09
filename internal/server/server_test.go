@@ -169,7 +169,7 @@ func setupTest(t *testing.T, fn func(*Config)) (rootClient, nobodyClient apiv1.L
 	l, err := net.Listen("tcp", "localhost:0")
 	require.NoError(t, err)
 
-	clientTLSConfig, err := config.SetupTlsConfig(config.TLSConfig{
+	clientTLSConfig, err := config.SetupTLSConfig(config.TLSConfig{
 		CAFile:   config.CAFile,
 		CertFile: config.RootClientCertFile,
 		KeyFile:  config.RootClientKeyFile,
@@ -187,7 +187,7 @@ func setupTest(t *testing.T, fn func(*Config)) (rootClient, nobodyClient apiv1.L
 		apiv1.LogClient,
 		[]grpc.DialOption,
 	) {
-		tlsConfig, err := config.SetupTlsConfig(config.TLSConfig{
+		tlsConfig, err := config.SetupTLSConfig(config.TLSConfig{
 			CAFile:   config.CAFile,
 			CertFile: crtPath,
 			KeyFile:  keyPath,
@@ -207,7 +207,7 @@ func setupTest(t *testing.T, fn func(*Config)) (rootClient, nobodyClient apiv1.L
 	var nobodyConn *grpc.ClientConn
 	nobodyConn, nobodyClient, _ = newClient(config.NobodyClientCertFile, config.NobodyClientKeyFile)
 
-	serverTLSConfig, err := config.SetupTlsConfig(config.TLSConfig{
+	serverTLSConfig, err := config.SetupTLSConfig(config.TLSConfig{
 		CAFile:        config.CAFile,
 		CertFile:      config.ServerCertFile,
 		KeyFile:       config.ServerKeyFile,
